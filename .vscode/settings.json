@@ -5,7 +5,11 @@
   "editor.lineHeight": 24,
   "workbench.colorTheme": "Gray Matter Light",
   "[markdown]": {
-    "editor.quickSuggestions": true
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    }
   },
   "git.enableSmartCommit": true,
   "git.postCommitCommand": "sync",
