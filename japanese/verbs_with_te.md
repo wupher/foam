@@ -1,5 +1,7 @@
 # 动词　て　型
 
+depends on [[classfication_of_verbs.md]]
+
 ## 变形
 
 ##　１类动词
