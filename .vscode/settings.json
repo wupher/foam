@@ -19,5 +19,6 @@
   "files.watcherExclude": {
     "**/node_modules": true
   },
-  "vscodeMarkdownNotes.newNoteDirectory":"notes/"
+  "vscodeMarkdownNotes.newNoteDirectory": "notes/",
+  "jsBox.host": "10.0.0.247"
 }
