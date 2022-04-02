@@ -82,4 +82,24 @@
 
 ### 2. 网关路由
 
+网关路由当前主要解决中台各微服务 URL 一致性问题和请求认证授权问题。这两者当前都属于中台的业务范畴，因此，截止目前，网关路由部分建议先由中台负责单独建设。
+
+当前 Spring Cloud 基于网关的解决方案有二:
+
+- Netflix Zuul
+- Spring Cloud Gateway
+
+后者作为前者的替代和更新，基于 Spring Framework 5、Spring Boot 2.0 版本。支持以下 feature：
+
+- Path Rewriting
+- Easy to write Predicates and Filters
+- Predicates and filters are specific to routes
+- Able to match routes on any request attribute
+
+可很方便的以 FP 模式实现路由规则的编写。
+
+此外，对于接口限流和熔断，Spring Cloud Gateway 也提供了相应支持:
+
+- Request Rate Limiting
+- Circuit Breaker integration.
 
