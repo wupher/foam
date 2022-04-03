@@ -43,3 +43,11 @@ struct App {
 - class 可以被继承，struct 不可以
 - class 可以被扩展，struct 不可以
 - 潜拷贝，深拷贝
+
+using copy func instead copy constructor
+
+class deinit func is a destructor function
+
+like cpp, declare a class as `final` to stop others subclassing it.
+
+
