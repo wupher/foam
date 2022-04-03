@@ -18,3 +18,28 @@ Swift 中的数值，不鼓励你通过数组下标进行访问，而推荐使�
 ## map
 
 map 也是值语义，和数组类似。
+
+## struct
+
+内置 observable 支持对属性进行监视
+
+```swift
+struct App {
+    var contacts = [String](){
+        didSet {
+            print("contacts changed, old value was \(oldValue) ")
+        }
+        willSet{
+            print("contacts will change to \(newValue) ")
+        }
+    }
+}
+```
+
+## class
+
+大体上 class 和 struct 的区别是：
+
+- class 可以被继承，struct 不可以
+- class 可以被扩展，struct 不可以
+- 潜拷贝，深拷贝
