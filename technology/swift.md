@@ -75,7 +75,7 @@ func getRandomBool() -> some Equatable{
 
 ### extensions + protocol
 
-#### 1. 扩展可以用于向 protocol 添加默认实现函数。
+#### 1. 扩展可以用于向 protocol 添加默认实现函数
 
 ```Swift
 protocol Person{
@@ -99,6 +99,5 @@ extension Numberic{
     }
 }
 ```
-
 > 注意： Self 这里代表`类型`， 而 self 这里代表`实例`。前者是首字母大写。
 
