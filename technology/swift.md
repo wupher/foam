@@ -38,6 +38,8 @@ struct App {
 
 ## class
 
+对于修改类成员变量的函数，需要添加 `mutating` keyword.
+
 大体上 class 和 struct 的区别是：
 
 - class 可以被继承，struct 不可以
@@ -50,4 +52,53 @@ class deinit func is a destructor function
 
 like cpp, declare a class as `final` to stop others subclassing it.
 
+## opaque return types
+
+当想把 protocol 用作函数返回值时，swift 有个语法要求。由于 protocol 并不是真正的实体类，而只是 contract 或者说 接口。所以你要使用 `some` 关键字，标识返回的是对应 protocol 的一个实现。
+
+```swift
+func getRandomNum() -> some Equatable {
+    return Int.random(in: 0...10)
+}
+
+func getRandomBool() -> some Equatable{
+    return Bool.random()
+}
+```
+
+> DESIGN GUIDELINE: If you return a new value rather than changing it in place, you should use world endings like `ed` or `ing`, like `reversed()`
+
+## Extensions
+
+- add method to existing type
+- add __properties__ to existing type: they must only be computed properties, not stored properties.
+
+### extensions + protocol
+
+#### 1. 扩展可以用于向 protocol 添加默认实现函数。
+
+```Swift
+protocol Person{
+    var name: String {get}
+    func sayHello()
+}
+
+extension Person{
+    func sayHello(){
+        print("Hi, I'm \(name)")
+    }
+}
+```
+
+#### 2. 扩展有时要考虑一点点，嗯，泛型
+
+```Swift
+extension Numberic{
+    func squared() -> Self{ //注意这里的返回是 self 而非 Int, Double ，因此此时不知道具体类是什么，所以返回 self
+        self * self
+    }
+}
+```
+
+> 注意： Self 这里代表`类型`， 而 self 这里代表`实例`。前者是首字母大写。
 
