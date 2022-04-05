@@ -101,3 +101,65 @@ extension Numberic{
 ```
 > 注意： Self 这里代表`类型`， 而 self 这里代表`实例`。前者是首字母大写。
 
+## optional
+
+### unwarp with let
+
+```Swift
+var username: String? = "joe"
+if let unwrappedUserName = username{
+    print(unwrappedUserName)
+}else{
+    print("username is nil")
+}
+```
+
+> Rule: when unwrapping optionals, it's very comon to unwarap them into a constant of the same name.
+
+### unwarp with guard
+
+```Swift
+func getUserName() -> String?{
+    return nil
+}
+
+guard let unwrappedUserName = getUserName() else{
+    print("username is nil")
+    return
+}
+```
+
+注意：
+
+1. 如果使用 guard 来检查函数输入，Swift 要求当检查失败时，使用 return
+2. optional unwarap 在 guard 语句后仍会是有效的，而 let 仅在 if 范围内才有效
+
+```Swift
+func printSquare(of number: Int?){
+    guard let number = number else{
+        print("number is nil")
+        // *must* exit the function here
+        return
+    }
+    // `number` is still available outside of `guard`
+    print(number * number)
+}
+```
+
+> NOTE: You can use guard with any condition, including ones that don't unwarp optionals . For example, you might use ```guard someArry.isEmpty else {return }``` to return early if the array is not empty.
+
+
+### unwarp with nil coalescing
+
+```Swift
+let new = dict["new"] ?? "0"
+```
+
+## try?
+
+```Swift
+let result = try? JSONSerialization.jsonObject(with: data, options: [])
+```
+
+解析出现异常时，直接通过 try? 返回 nil。如果你要了解具体异常，这种方法会丢失信息。但很多时候我们不关心异常，只是想知道解析是否成功。
+
