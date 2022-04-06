@@ -1,4 +1,6 @@
 
+# SwifUI 笔记
+
 ## 10 children
 
 SwiftUI 有个有限的限制，每个子元素的数量不能超过 10 个。比如，你在 form 里面加入 Text，加到 10 个，没问题，加到 11 个？会直接报错。
@@ -43,3 +45,14 @@ Form {
 ```
 
 这要是动态的……，嗯，就有趣了。
+
+## $ binding
+
+> In Swift, we mark these two-way bindings with a special symbol so they stand out: we write a dollar sign before them. This tells Swift that it should read the value of the property but also write it back as any changes happen.
+
+## Loop View 
+
+`ForEach` 居然是 SwiftUI 而非 Swift 中的内容。此外, ForEach 没有 10 Item 的限制。
+
+> So, when we’re using ForEach to create many views and SwiftUI asks us what identifier makes each item in our string array unique, our answer is \.self, which means “the strings themselves are unique.” This does of course mean that if you added duplicate strings to the students array you might hit problems, but here it’s just fine.
+

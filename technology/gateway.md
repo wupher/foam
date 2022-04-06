@@ -41,8 +41,7 @@
 将网关从功能上分为三个功能维度分别论述：
 
 - 服务治理
-- 网关路由
-- 接口限流
+- 网关路由与接口限流
 
 ### 1. 服务治理（服务发现/服务注册/负载均衡）
 
@@ -80,11 +79,13 @@
 
 如此项进展顺利，前述 step-2 就意义有限。
 
-### 2. 网关路由
+### 2. 网关路由和接口限流
 
 网关路由当前主要解决中台各微服务 URL 一致性问题和请求认证授权问题。这两者当前都属于中台的业务范畴，因此，截止目前，网关路由部分建议先由中台负责单独建设。
 
-当前 Spring Cloud 基于网关的解决方案有二:
+当前，业界网关程序通常以Nginx 扩展，Golang，Spring Cloud 三种不同平台解决方案。当前，较少 PHP 系统化网关解决方案。大都基于 Lumen 和 Laravel 构建业务网关。
+
+基于 Spring Cloud 的网关解决方案有二:
 
 - Netflix Zuul
 - Spring Cloud Gateway
@@ -98,8 +99,21 @@
 
 可很方便的以 FP 模式实现路由规则的编写。
 
-此外，对于接口限流和熔断，Spring Cloud Gateway 也提供了相应支持:
+此外，对于`接口限流`和`熔断`，Spring Cloud Gateway 也提供了相应支持:
 
 - Request Rate Limiting
 - Circuit Breaker integration.
 
+综上所述，网关技术栈上推荐使用 Spring Cloud Gateway 进行实现。
+
+优点：
+
+- Spring Cloud 支持，即使后续不使用诸如 LBS 等机制，也方便集成现有 Java 诸微服务。
+- Netflix Zuul、 Spring Cloud Gateway 都有完整社区支持与更新，也在诸多生产环境上使用
+- 对于常用网关功能进行完整封装，无需从头开始实现
+
+缺点：
+
+- PHP 无法像 Spring Java 应用那样使用 Spring Cloud 进行方便的接入与集成
+- 当处理 SSL 与 HTTP 同时支持，Spring Cloud Gateway 需要启用 InsecureTrustManager 以支持 SSL 证书
+- Spring Cloud Gateway 使用 webflux 实现，并非所有人喜爱 ReactiveX 技术栈
