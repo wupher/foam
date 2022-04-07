@@ -50,9 +50,14 @@ Form {
 
 > In Swift, we mark these two-way bindings with a special symbol so they stand out: we write a dollar sign before them. This tells Swift that it should read the value of the property but also write it back as any changes happen.
 
-## Loop View 
+## Loop View
 
 `ForEach` 居然是 SwiftUI 而非 Swift 中的内容。此外, ForEach 没有 10 Item 的限制。
 
 > So, when we’re using ForEach to create many views and SwiftUI asks us what identifier makes each item in our string array unique, our answer is \.self, which means “the strings themselves are unique.” This does of course mean that if you added duplicate strings to the students array you might hit problems, but here it’s just fine.
 
+## Log output
+
+```Swift
+let _ = print(Locale.current.currencyCode ?? "NONE")
+```
