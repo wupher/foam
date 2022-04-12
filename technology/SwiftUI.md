@@ -61,3 +61,10 @@ Form {
 ```Swift
 let _ = print(Locale.current.currencyCode ?? "NONE")
 ```
+
+## Button
+
+### ButtonRole
+
+指明按钮的角色，当前默认就两种 cancel, destructive 一般用于取消，删除这类按钮。一般就是加个默认新式。
+
