@@ -68,3 +68,13 @@ let _ = print(Locale.current.currencyCode ?? "NONE")
 
 指明按钮的角色，当前默认就两种 cancel, destructive 一般用于取消，删除这类按钮。一般就是加个默认新式。
 
+### Label
+
+Button 中常用的 Label struct 是一个非常值得学习的封装。 
+
+```Swift
+struct Label<Title, Icon> : View where Title : View, Icon : View 
+```
+
+这个 where 关键字的使用可以参考：[this](https://www.avanderlee.com/swift/where-using-swift/)　AND [this](https://www.appypie.com/swift-where-how-to)
+
