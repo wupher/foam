@@ -78,3 +78,11 @@ struct Label<Title, Icon> : View where Title : View, Icon : View
 
 这个 where 关键字的使用可以参考：[this](https://www.avanderlee.com/swift/where-using-swift/)　AND [this](https://www.appypie.com/swift-where-how-to)
 
+### View Modify
+
+There are 4 built-in shapes in swift:
+_ retangle
+- rounded retangle
+- circle
+- capsule
+
