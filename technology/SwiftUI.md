@@ -78,11 +78,90 @@ struct Label<Title, Icon> : View where Title : View, Icon : View
 
 这个 where 关键字的使用可以参考：[this](https://www.avanderlee.com/swift/where-using-swift/)　AND [this](https://www.appypie.com/swift-where-how-to)
 
-### View Modify
+### View Modifiers
 
 There are 4 built-in shapes in swift:
-_ retangle
+
+- retangle
 - rounded retangle
 - circle
 - capsule
 
+#### [Order matters](https://www.hackingwithswift.com/books/ios-swiftui/why-modifier-order-matters)
+
+Whenever we apply a modifier to a SwiftUI view, we actually create a new view with that change applied – we don’t just modify the existing view in place. If you think about it, this behavior makes sense: our views only hold the exact properties we give them, so if we set the background color or font size there is no place to store that data. 
+
+peek here:
+
+```Swift
+Button("Hello, world!") {
+    print(type(of: self.body))
+}    
+.background(.red)
+.frame(width: 200, height: 200)
+```
+
+To read what the type is, start from the innermost type and work your way out:
+The innermost type is ModifiedContent`<Button<Text>`, _BackgroundStyleModifier`<Color>`: our button has some text with a background color applied.
+    Around that we have ModifiedContent`<…, _FrameLayout>`, which takes our first view (button + background color) and gives it a larger frame.
+
+The best way to think about it for now is to imagine that SwiftUI renders your view after every single modifier. So, as soon as you say .background(.red) it colors the background in red, regardless of what frame you give it. If you then later expand the frame, it won’t magically redraw the background – that was already applied.
+
+> Of course, this isn’t actually how SwiftUI works, because if it did it would be a performance nightmare, but it’s a neat mental shortcut to use while you’re learning.
+
+An important side effect of using modifiers is that we can apply the same effect multiple times: each one simply adds to whatever was there before.
+
+```Swift
+Text("Hello, world!")
+    .padding()
+    .background(.red)
+    .padding()
+    .background(.blue)
+    .padding()
+    .background(.green)
+    .padding()
+    .background(.yellow)
+```
+
+#### Environment Modifiers
+
+Many modifiers can be applied to containers, which allows us to apply the same modifier to many views at the same time. 
+
+```Swift
+VStack {
+    Text("Gryffindor")
+    Text("Hufflepuff")
+    Text("Ravenclaw")
+    Text("Slytherin")
+}
+.font(.title)
+```
+
+From a coding perspective these modifiers are used exactly the same way as regular modifiers. However, they behave subtly differently because if any of those child views override the same modifier, the child’s version takes priority.
+
+```Swift
+VStack {
+    Text("Gryffindor")
+        .font(.largeTitle)
+    Text("Hufflepuff")
+    Text("Ravenclaw")
+    Text("Slytherin")
+}
+.font(.title)
+```
+
+不是所有的 modifier 都是 ENV Modifier，把 font 换成 blur 就会是完全不同的行为：blur() 是 regular modifier.
+想知道 modifier 是哪种，只能读文档，或者做试验。
+
+#### Views as Property
+
+using `@ViewBuilder` attribute.
+
+```Swift
+@ViewBuilder var spells: some View {
+    Text("Lumos")
+    Text("Obliviate")
+}
+```
+
+用于封装视图类型
