@@ -58,3 +58,9 @@
 - 出発「しゅっぱつ」
 - 参加者「さん・か・しゃ」
 - 髪「かみ」
+
+## レファランス
+
+- 小卡日语 147 课
+- [[推断推测:かもしれません]]
+- [东京外国语大学：推断，推测](http://www.coelang.tufs.ac.jp/ja/zt/gmod/contents/explanation/076.html)
