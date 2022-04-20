@@ -165,3 +165,80 @@ using `@ViewBuilder` attribute.
 ```
 
 用于封装视图类型
+
+#### 定义自己的 modifier
+
+继承`ViewModifier` 并实现 `body` 方法。
+
+```Swift
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.white)
+            .padding()
+            .background(.blue)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+}
+```
+
+使用起来很麻烦，得这样用:
+
+```Swift
+Text("Hello World")
+    .modifier(Title())
+```
+
+用起来很 麻烦我们可以使用`extension` 来定义自己的 modifier。
+
+```Swift
+extension View {
+    func titleStyle() -> some View {
+        modifier(Title())
+    }
+}
+```
+
+这下总算能看到和官方相似代码：
+
+```Swift
+Text("Hello World")
+    .titleStyle()
+```
+
+除了扩展现有，我们还能直接修改原有的 view
+
+```Swift
+struct Watermark: ViewModifier {
+    var text: String
+
+    func body(content: Content) -> some View {
+        ZStack(alignment: .bottomTrailing) {
+            content
+            Text(text)
+                .font(.caption)
+                .foregroundColor(.white)
+                .padding(5)
+                .background(.black)
+        }
+    }
+}
+
+extension View {
+    func watermarked(with text: String) -> some View {
+        modifier(Watermark(text: text))
+    }
+}
+```
+
+水印的封装与使用
+
+```Swift
+Color.blue
+    .frame(width: 300, height: 200)
+    .watermarked(with: "Hacking with Swift")
+```
+
+#### 自定义自己的 View 容器: [link](https://www.hackingwithswift.com/books/ios-swiftui/custom-containers)
+
