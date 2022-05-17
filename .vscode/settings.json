@@ -3,7 +3,7 @@
   "editor.wrappingIndent": "indent",
   "editor.overviewRulerBorder": false,
   "editor.lineHeight": 24,
-  "workbench.colorTheme": "Tomorrow Night Blue",
+  "workbench.colorTheme": "Tokyo City Lighter",
   "[markdown]": {
     "editor.quickSuggestions": {
       "other": true,
