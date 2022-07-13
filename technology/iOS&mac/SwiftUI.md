@@ -241,3 +241,7 @@ Color.blue
 ```
 
 #### 自定义自己的 View 容器: [link](https://www.hackingwithswift.com/books/ios-swiftui/custom-containers)
+
+## Environment
+
+我以为 Environment 是个保存环境变更的地方。其实完全不是，它定义了某些默认操作，比如 dismiss，通过它来绑定调用。
