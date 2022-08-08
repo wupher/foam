@@ -2,7 +2,7 @@
 id: 6bet4bptwsim9cj70foz3w0
 title: '2022-08-08'
 desc: 'journey'
-updated: 1659969466603
+updated: 1659969512757
 created: 1659968066285
 traitIds:
   - journalNote
@@ -16,7 +16,7 @@ traitIds:
 
 ## 生活
 
-![the dog](2022-08-08-22-33-30.png)
+![the dog](2022-08-08-22-33-30.jpeg)
 
 - 回来的时候，范学谦说他和姐姐捡到一只秋田犬。杨丽华完全不相信，电话里还让他们丢掉。结果回家一看，真是只可爱的秋田犬。性格温顺，不乱叫，很可爱。她一看就爱上了。
 
