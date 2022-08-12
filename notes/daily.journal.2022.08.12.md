@@ -2,7 +2,7 @@
 id: qdu1wjb0elhvoimp1bs24yf
 title: '2022-08-12'
 desc: ''
-updated: 1660285906459
+updated: 1660286530961
 created: 1660266817653
 traitIds:
   - journalNote
@@ -58,6 +58,10 @@ the article is [here](https://lbrito1.github.io/blog/2020/02/repurposing-android
 #### stem roller
 
 [StemRoller](https://www.stemroller.com/) is a tool to roll your own instrucment from any song. 从歌曲中抽取特定伴奏，生成卡拉 OK等任何你需要的音轨。工具本身[开源](https://github.com/stemrollerapp/stemroller)。缺点么，慢。需要显卡。依赖于 npm, ffmpeg. 
+
+#### Melody
+
+基于 Vue 开发的音乐管理平台。用于搜索，管理自己喜欢的歌曲。将将之上传至音乐平台的云盘。[项目地址](https://github.com/foamzou/melody)
 
 ## Something else
 
