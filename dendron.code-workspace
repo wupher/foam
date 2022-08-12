@@ -2,7 +2,11 @@
   "folders": [
     {
       "path": "notes",
-      "name": "foam"
+      "name": "daily_notes"
+    },
+    {
+      "path": "Japanese",
+      "name": "日本語を勉強する"
     }
   ],
   "settings": {
