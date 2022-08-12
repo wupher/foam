@@ -2,7 +2,7 @@
 id: on1pkaabrsrx17yvi2tyc9w
 title: mongodb_shrink_plan
 desc: ''
-updated: 1660226535682
+updated: 1660269713686
 created: 1660196760605
 ---
 
@@ -38,7 +38,7 @@ created: 1660196760605
 
 ```js
 //delete one years ago's data
-var deadLine = new Date(ISODate().getTime() - 1000 * 3600 * 24 * 365);
+var deadLine = new Date(ISODate().getTime() - 1000 * 3600 * 24 * 180);
 db.getCollection('dataJob').remove({status:1});
 db.getCollection('dataJob').remove({"date" : {$lt: deadLine}});
 
